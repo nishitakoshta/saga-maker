@@ -5,7 +5,37 @@
 Saga-Maker is a lightweight Java library that implements the **Saga pattern** (orchestration-based) for managing distributed transactions across microservices. It handles step execution with exponential backoff retry, automatic compensation rollback on failure, and provides a built-in REST API to inspect saga state.
 
 ```
-🏗️  Version: 1.0.0    ☕  Java 17+    📦  Maven    🔌  Spring Boot 3.x
+🏗️  Version: 1.0.0    ☕  Java 17+    📦  JitPack    🔌  Spring Boot 3.x
+```
+
+## Installation
+
+Add JitPack repository and dependency to your `pom.xml`:
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.nishitakoshta</groupId>
+    <artifactId>saga-maker</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+Or for Gradle:
+
+```gradle
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.nishitakoshta:saga-maker:1.0.0'
+}
 ```
 
 ---
@@ -163,17 +193,7 @@ A saga is a sequence of local transactions where each step has a **compensation 
 
 ## Quick Start
 
-### 1. Add dependency
-
-```xml
-<dependency>
-    <groupId>com.sagamaker</groupId>
-    <artifactId>saga-maker-core</artifactId>
-    <version>1.0.0</version>
-</dependency>
-```
-
-### 2. Define a saga (Programmatic API)
+### 1. Define a saga (Programmatic API)
 
 ```java
 // Define saga with 2 steps
@@ -208,7 +228,7 @@ SagaDefinition orderSaga = new SagaDefinition("order-creation")
 sagaStore.saveDefinition(orderSaga);
 ```
 
-### 3. Execute the saga
+### 2. Execute the saga
 
 ```java
 // Create context with input data
@@ -231,7 +251,7 @@ if (instance.getStatus() == SagaStatus.COMPLETED) {
 }
 ```
 
-### 4. Inspect saga state
+### 3. Inspect saga state
 
 ```bash
 # List all sagas
@@ -911,7 +931,7 @@ Contributions are welcome! Here's how you can help:
 
 ```bash
 # Clone
-git clone https://github.com/nishitakoshta/saga-maker
+git clone https://github.com/nishitakoshta/saga-maker.git
 cd saga-maker
 
 # Build
