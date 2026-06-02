@@ -637,7 +637,7 @@ When running within Spring Boot, Saga-Maker automatically exposes:
 ### List all sagas
 
 ```bash
-curl http://localhost:8080/_saga/instances
+curl http://localhost:8081/_saga/instances
 ```
 
 Response:
@@ -674,13 +674,13 @@ Response:
 ### Get specific saga
 
 ```bash
-curl http://localhost:8080/_saga/instances/550e8400-e29b-41d4-a716-446655440000
+curl http://localhost:8081/_saga/instances/550e8400-e29b-41d4-a716-446655440000
 ```
 
 ### Health check
 
 ```bash
-curl http://localhost:8080/_saga/health
+curl http://localhost:8081/_saga/health
 ```
 
 Response:
@@ -726,12 +726,12 @@ cd saga-maker-sample
 mvn spring-boot:run
 ```
 
-The app starts on http://localhost:8080
+The app starts on http://localhost:8081
 
 ### Test 1: Successful Order
 
 ```bash
-curl -X POST http://localhost:8080/api/orders \
+curl -X POST http://localhost:8081/api/orders \
   -H "Content-Type: application/json" \
   -d '{"userId":"user-1","itemId":"item-1","quantity":2,"amount":500}'
 ```
@@ -748,14 +748,14 @@ Expected response:
 
 Verify state:
 ```bash
-curl http://localhost:8080/_saga/instances
+curl http://localhost:8081/_saga/instances
 # -> status shows COMPLETED, all 3 steps COMPLETED
 ```
 
 ### Test 2: Failed Order (Insufficient Inventory)
 
 ```bash
-curl -X POST http://localhost:8080/api/orders \
+curl -X POST http://localhost:8081/api/orders \
   -H "Content-Type: application/json" \
   -d '{"userId":"user-1","itemId":"item-1","quantity":999,"amount":500}'
 ```
@@ -775,7 +775,7 @@ Since no steps completed, **no compensation was needed**.
 ### Test 3: Failed Order (Insufficient Balance)
 
 ```bash
-curl -X POST http://localhost:8080/api/orders \
+curl -X POST http://localhost:8081/api/orders \
   -H "Content-Type: application/json" \
   -d '{"userId":"user-1","itemId":"item-1","quantity":2,"amount":99999}'
 ```
@@ -792,7 +792,7 @@ Expected response:
 
 Check compensation:
 ```bash
-curl http://localhost:8080/_saga/instances/770e8400-e29b-41d4-a716-446655440002
+curl http://localhost:8081/_saga/instances/770e8400-e29b-41d4-a716-446655440002
 # -> reserve-inventory: COMPENSATED (inventory was released)
 # -> process-payment: FAILED
 ```
