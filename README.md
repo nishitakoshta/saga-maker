@@ -255,13 +255,13 @@ if (instance.getStatus() == SagaStatus.COMPLETED) {
 
 ```bash
 # List all sagas
-curl http://localhost:8080/_saga/instances
+curl http://localhost:8081/_saga/instances
 
 # Get specific saga by ID
-curl http://localhost:8080/_saga/instances/{sagaInstanceId}
+curl http://localhost:8081/_saga/instances/{sagaInstanceId}
 
 # Health check
-curl http://localhost:8080/_saga/health
+curl http://localhost:8081/_saga/health
 ```
 
 ---
