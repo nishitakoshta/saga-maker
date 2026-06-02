@@ -1,0 +1,17 @@
+com\sagamaker\core\engine\SagaOrchestrator.class
+com\sagamaker\core\model\SagaStepExecution.class
+com\sagamaker\core\config\SagaMakerAutoConfiguration.class
+com\sagamaker\core\exception\CompensationException.class
+com\sagamaker\core\model\SagaInstance.class
+com\sagamaker\core\model\SagaStepDefinition.class
+com\sagamaker\core\annotation\Compensate.class
+com\sagamaker\core\exception\SagaExecutionException.class
+com\sagamaker\core\endpoint\SagaEndpoint.class
+com\sagamaker\core\model\SagaStatus.class
+com\sagamaker\core\store\InMemorySagaStore.class
+com\sagamaker\core\model\StepStatus.class
+com\sagamaker\core\store\SagaStore.class
+com\sagamaker\core\model\SagaContext.class
+com\sagamaker\core\annotation\Saga.class
+com\sagamaker\core\model\SagaDefinition.class
+com\sagamaker\core\annotation\SagaStep.class
